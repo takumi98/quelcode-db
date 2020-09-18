@@ -1,0 +1,73 @@
+CREATE TABLE `users`(
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `self_introduction` VARCHAR(255),
+  `work_number` varchar(255),
+  `mobile_number` varchar(255),
+  `delete_flag` tinyint(1) DEFAULT 0,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `update_date` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE `chatrooms`(
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `overview` VARCHAR(255),
+  `file_send_allowed_flag` tinyint(1) DEFAULT 0,
+  `direct_chat_flag` tinyint(1) DEFAULT 0,
+  `delete_flag` tinyint(1) DEFAULT 0,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_user_id` int(11) NOT NULL,
+  `update_date` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_date_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`create_user_id`) REFERENCES `users`(`id`),
+  FOREIGN KEY (`update_date_user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE `rooms`(
+  `user_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`, `room_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `posts`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `room_id` int(11) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `file` varchar(255),
+  `direct_chat_flag` tinyint(1) DEFAULT 0,
+  `delete_flag` tinyint(1) DEFAULT 0,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_user_id` int(11) NOT NULL,
+  `update_date` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_date_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`),
+  FOREIGN KEY (`create_user_id`) REFERENCES `users` (`id`),
+  FOREIGN KEY (`update_date_user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE `tasks`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `room_id` int(11) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `task_user` int(11) NOT NULL,
+  `time_limit` varchar(255) NOT NULL,
+  `complete_flag` tinyint(1) DEFAULT 0,
+  `delete_flag` tinyint(1) DEFAULT 0,
+  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_user_id` int(11) NOT NULL,
+  `update_date` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `update_date_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`),
+  FOREIGN KEY (`task_user`) REFERENCES `users` (`id`), 
+  FOREIGN KEY (`create_user_id`) REFERENCES `users` (`id`),
+  FOREIGN KEY (`update_date_user_id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
