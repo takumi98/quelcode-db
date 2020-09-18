@@ -31,7 +31,7 @@ CREATE TABLE `chatrooms`(
 CREATE TABLE `rooms`(
   `user_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
-  `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`, `room_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`)
@@ -42,7 +42,6 @@ CREATE TABLE `posts`(
   `room_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
   `file` varchar(100),
-  `direct_chat_flag` tinyint(1) NOT NULL DEFAULT '0',
   `is_delete` tinyint(1) NOT NULL DEFAULT '0',
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `create_user_id` int(11) NOT NULL,
