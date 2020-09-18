@@ -1,10 +1,10 @@
 CREATE TABLE `users`(
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `self_introduction` VARCHAR(255),
-  `work_number` varchar(255),
-  `mobile_number` varchar(255),
+  `email` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `self_introduction` VARCHAR(1000),
+  `work_number` varchar(13),
+  `mobile_number` varchar(13),
   `delete_flag` tinyint(1) DEFAULT 0,
   `create_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `update_date` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -13,8 +13,8 @@ CREATE TABLE `users`(
 
 CREATE TABLE `chatrooms`(
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  `overview` VARCHAR(255),
+  `name` VARCHAR(100) NOT NULL,
+  `overview` VARCHAR(1000),
   `file_send_allowed_flag` tinyint(1) DEFAULT 0,
   `direct_chat_flag` tinyint(1) DEFAULT 0,
   `delete_flag` tinyint(1) DEFAULT 0,
@@ -39,7 +39,7 @@ CREATE TABLE `rooms`(
 CREATE TABLE `posts`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_id` int(11) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` varchar(1000) NOT NULL,
   `file` varchar(255),
   `direct_chat_flag` tinyint(1) DEFAULT 0,
   `delete_flag` tinyint(1) DEFAULT 0,
@@ -56,7 +56,7 @@ CREATE TABLE `posts`(
 CREATE TABLE `tasks`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_id` int(11) NOT NULL,
-  `content` varchar(255) NOT NULL,
+  `content` varchar(1000) NOT NULL,
   `task_user` int(11) NOT NULL,
   `time_limit` varchar(255) NOT NULL,
   `complete_flag` tinyint(1) DEFAULT 0,
