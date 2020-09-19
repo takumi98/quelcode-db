@@ -59,7 +59,7 @@ CREATE TABLE `tasks`(
   `content` varchar(1000) NOT NULL,
   `task_user` int(11) NOT NULL,
   `time_limit` timestamp NULL,
-  `is_complete` tinyint(1) NOT NULL DEFAULT '0',
+  `is_completed` tinyint(1) NOT NULL DEFAULT '0',
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `create_user_id` int(11) NOT NULL,
