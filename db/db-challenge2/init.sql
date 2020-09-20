@@ -25,7 +25,7 @@ CREATE TABLE `chatrooms`(
   `update_user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`create_user_id`) REFERENCES `users`(`id`),
-  FOREIGN KEY (`update_date_user_id`) REFERENCES `users` (`id`)
+  FOREIGN KEY (`update_user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE `rooms`(
@@ -50,7 +50,7 @@ CREATE TABLE `posts`(
   PRIMARY KEY (`id`),
   FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`),
   FOREIGN KEY (`create_user_id`) REFERENCES `users` (`id`),
-  FOREIGN KEY (`update_date_user_id`) REFERENCES `users` (`id`)
+  FOREIGN KEY (`update_user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 CREATE TABLE `tasks`(
@@ -69,5 +69,5 @@ CREATE TABLE `tasks`(
   FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`),
   FOREIGN KEY (`task_user`) REFERENCES `users` (`id`), 
   FOREIGN KEY (`create_user_id`) REFERENCES `users` (`id`),
-  FOREIGN KEY (`update_date_user_id`) REFERENCES `users` (`id`)
+  FOREIGN KEY (`update_user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
