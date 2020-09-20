@@ -58,7 +58,7 @@ CREATE TABLE `tasks`(
   `room_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
   `task_representative` int(11) NOT NULL,
-  `time_limit` timestamp NULL,
+  `deadline` timestamp NULL,
   `is_completed` tinyint(1) NOT NULL DEFAULT false,
   `is_deleted` tinyint(1) NOT NULL DEFAULT false,
   `create_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
