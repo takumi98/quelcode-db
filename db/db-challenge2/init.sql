@@ -67,7 +67,7 @@ CREATE TABLE `tasks`(
   `update_user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`),
-  FOREIGN KEY (`task_user`) REFERENCES `users` (`id`), 
+  FOREIGN KEY (`task_representative`) REFERENCES `users` (`id`), 
   FOREIGN KEY (`create_user_id`) REFERENCES `users` (`id`),
   FOREIGN KEY (`update_user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
