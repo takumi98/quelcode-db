@@ -3,7 +3,7 @@ CREATE TABLE `users`(
   `name` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
-  `self_introduction` VARCHAR(1000) NOT NULL,
+  `self_introduction` VARCHAR(1000) NULL,
   `work_phone_number` varchar(13),
   `mobile_phone_number` varchar(13),
   `is_deleted` tinyint(1) NOT NULL DEFAULT false,
