@@ -57,7 +57,7 @@ CREATE TABLE `tasks`(
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `room_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
-  `task_assign_member` int(11) NOT NULL,
+  `assign_member` int(11) NOT NULL,
   `deadline` timestamp NULL,
   `is_completed` tinyint(1) NOT NULL DEFAULT false,
   `is_deleted` tinyint(1) NOT NULL DEFAULT false,
@@ -67,7 +67,7 @@ CREATE TABLE `tasks`(
   `update_user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`room_id`) REFERENCES `chatrooms` (`id`),
-  FOREIGN KEY (`task_representative`) REFERENCES `users` (`id`), 
+  FOREIGN KEY (`assign_member`) REFERENCES `users` (`id`), 
   FOREIGN KEY (`create_user_id`) REFERENCES `users` (`id`),
   FOREIGN KEY (`update_user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
