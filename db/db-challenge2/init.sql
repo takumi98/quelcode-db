@@ -28,7 +28,7 @@ CREATE TABLE `chatrooms`(
   FOREIGN KEY (`update_user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-CREATE TABLE `rooms`(
+CREATE TABLE `users_chatrooms`(
   `user_id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `create_datetime`datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
