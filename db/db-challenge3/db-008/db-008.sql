@@ -6,4 +6,4 @@ ON users_chatrooms.user_id=users.id
 JOIN chatrooms
 ON users_chatrooms.room_id=chatrooms.id
 WHERE users.is_deleted=false AND chatrooms.is_deleted=false
-ORDER BY users_chatrooms.create_datetime;
+ORDER BY users_chatrooms.create_datetime ASC;
